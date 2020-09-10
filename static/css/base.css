@@ -159,6 +159,7 @@ a {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+    background-color: #F5F5F5;
 }
 
 .jq22-scrollView {
@@ -172,6 +173,7 @@ a {
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     position: relative;
+    background-color: #F5F5F5;
 }
 
 .jq22-navBar {
