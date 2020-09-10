@@ -1,0 +1,173 @@
+{% extends 'base_main.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'blm/main/mine/css/mine.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    <title>
+        饱了吗个人中心
+    </title>
+{% endblock %}
+
+
+{% block header %}
+    <div class="center-block" style="padding-top: 15px">
+        <h2 style="color: white;font-size: 18px">饱了吗 ?</h2>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    {#    个人基础信息#}
+    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
+        <div class="panel-body" style="padding: 5px">
+            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
+                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
+            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
+            <label style="margin-left: 10px">手机号</label>
+        </div>
+    </div>
+
+    {#    吃货卡#}
+    <a href="#">
+        <div class="panel panel-default"
+             style="margin:8px;margin-bottom: 12px;margin-top:0px;background-color: #4169E1">
+            <div class="panel-body" style="padding: 5px">
+                <img src="{% static 'blm/main/mine/img/chihuoka.png' %}" class="img-circle"
+                     style="width: 30px;float: left">
+                <label style="margin-top: 6px;margin-left: 5px;color: white">吃货卡</label><br>
+                <span style="margin-left: 5px;font-size: 12px;color: white">8元升级超级吃货卡,每月领取 20元 红包</span>
+            </div>
+        </div>
+    </a>
+
+    {#    常用功能#}
+    <div class="panel panel-default" style="margin:8px;margin-top:0px;margin-bottom: 12px">
+        <div class="panel-body" style="padding: 5px">
+            <label style="margin-top: 2px;margin-left: 5px;padding-bottom: 5px">常用功能</label><br>
+
+            <div style="display: inline;float: left;margin-left: 5px">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true" style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">个人资料</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">订单详情</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-map-marker" aria-hidden="true"
+                          style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">地址管理</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-earphone" aria-hidden="true" style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">客服中心</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {#    红包#}
+    <div class="panel panel-default" style="margin:8px;margin-top:0px;margin-bottom: 12px">
+        <div class="panel-body" style="padding: 10px">
+            <img src="{% static 'blm/main/mine/img/hongbao.png' %}" class="img-responsive"
+                 style="width: 30px;display: inline">
+            <label style="margin-top: 8px;margin-left: 5px">&nbsp赚吃货豆</label>
+            <a href="#">
+                <span style="padding-top: 22px;margin-left: 150px;font-size: 12px">可兑换大红包></span>
+            </a>
+        </div>
+    </div>
+
+    {#    更多#}
+    <div class="panel panel-default" style="margin:8px;margin-top:0px;margin-bottom: 12px">
+        <div class="panel-body" style="padding: 5px">
+            <label style="margin-top: 2px;margin-left: 5px;padding-bottom: 5px">更多</label><br>
+
+            <div style="display: inline;float: left;margin-left: 5px">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true" style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">店铺关注</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true" style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">推荐有奖</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-fire" aria-hidden="true"
+                          style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">最新资讯</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-cog" aria-hidden="true" style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">系统设置</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left;clear: both;margin-left: 5px;padding-top: 25px">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-time" aria-hidden="true"
+                          style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">点餐提醒</span>
+                </a>
+            </div>
+
+            <div style="display: inline;float: left;padding-top: 25px;padding-bottom: 25px">
+                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <span class="jq22-tabBar-item-icon">
+                    <span class="glyphicon glyphicon glyphicon-tint" aria-hidden="true"
+                          style="width: 20px"></span>
+                </span>
+                    <span class="jq22-tabBar-item-text">公益活动</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-8"></div>
+    </div>
+
+{% endblock %}
