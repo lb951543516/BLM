@@ -39,36 +39,13 @@
         {#        图片循环#}
         <div class="m-slider" data-ydui-slider>
             <div class="slider-wrapper">
-                <div class="slider-item">
-                    <a href="javascript:;">
-                        <img src="{% static 'blm/main/home/img/xhbf1.png' %}">
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="javascript:;">
-                        <img src="{% static 'blm/main/home/img/xhbf2.png' %}">
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="javascript:;">
-                        <img src="{% static 'blm/main/home/img/xhbf3.png' %}">
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="javascript:;">
-                        <img src="{% static 'blm/main/home/img/xhbf4.png' %}">
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="javascript:;">
-                        <img src="{% static 'blm/main/home/img/xhbf5.png' %}">
-                    </a>
-                </div>
-                <div class="slider-item">
-                    <a href="javascript:;">
-                        <img src="{% static 'blm/main/home/img/xhbf6.png' %}">
-                    </a>
-                </div>
+                {% for wheel in wheels %}
+                    <div class="slider-item">
+                        <a href="#">
+                            <img src="/static/blm/main/home{{ wheel.img }}">
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
             <div class="slider-pagination"></div>
         </div>
