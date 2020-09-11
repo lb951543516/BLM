@@ -13,7 +13,146 @@
 {% endblock %}
 
 {% block header %}
-    <div class="center-block" style="padding-top: 15px">
+    {{ block.super }}
+
+    <div class="center-block" style="padding-top: 15px;position: relative;height: 44px">
         <h2 style="color: white;font-size: 18px">全球购</h2>
     </div>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="swiper-container">
+        <ul class="swiper-container-ul">
+            <li class="swiper-container-ul-li actives" id="all_type">
+                全部分类 <span class="glyphicon glyphicon-chevron-down"></span>
+            </li>
+
+            {#            全部分类的显示模块#}
+            <div id="all_type_container" hidden="hidden">
+                <div>
+                    <a href="">
+                        <span>哈哈哈</span>
+                        <span>呵呵呵</span>
+                    </a>
+                </div>
+            </div>
+
+            <li class="swiper-container-ul-li" id="sort_rule">
+                综合排序 <span class="glyphicon glyphicon-chevron-down"></span>
+            </li>
+        </ul>
+
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="content" style="height: 2216px;">
+                    <div id="left" class="left">
+                        <ul>
+                            {% for foodtype in foodtypes %}
+                                {% if forloop.counter == 1 %}
+                                    <li class="active">{{ foodtype.typename }}</li>
+                                {% else %}
+                                    <li>{{ foodtype.typename }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="right" class="right" style="">
+                        <ul>
+                            {#热搜榜#}
+                            <li>
+                                {% for good in goods1 %}
+                                    <div>
+                                        <div class="item">
+                                            <div class="item-left">
+                                                <div class="item-img"><img src="images/p1.jpg"></div>
+                                            </div>
+                                            <div class="item-right">
+                                                <div class="title">{{ good.productlongname }}</div>
+                                                <p class="detailTag"><span>精选</span></p>
+                                                <div class="price">¥ {{ good.price }}
+                                                    &nbsp&nbsp<span>¥ {{ good.marketprice }}</span>
+                                                </div>
+                                            </div>
+                                            {#<div class="item-ico addnum"></div>#}
+                                            <section id="section1">
+                                                <button>-</button>
+                                                <span>0</span>
+                                                <button>+</button>
+                                            </section>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                            {#新品#}
+                            <li>
+                                {% for good in goods2 %}
+                                    <div>
+                                        <div class="item">
+                                            <div class="item-left">
+                                                <div class="item-img"><img src="images/p1.jpg"></div>
+                                            </div>
+                                            <div class="item-right">
+                                                <div class="title">{{ good.productlongname }}</div>
+                                                <p class="detailTag"><span>精选</span></p>
+                                                <div class="price">¥ {{ good.price }}
+                                                    &nbsp&nbsp<span>¥ {{ good.marketprice }}</span>
+                                                </div>
+                                            </div>
+                                            <section id="section1">
+                                                <button>-</button>
+                                                <span>0</span>
+                                                <button>+</button>
+                                            </section>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                            {#水果#}
+                            <li>
+                                {% for good in goods3 %}
+                                    <div>
+                                        <div class="item">
+                                            <div class="item-left">
+                                                <div class="item-img"><img src="images/p1.jpg"></div>
+                                            </div>
+                                            <div class="item-right">
+                                                <div class="title">{{ good.productlongname }}</div>
+                                                <p class="detailTag"><span>精选</span></p>
+                                                <div class="price">¥ {{ good.price }}
+                                                    &nbsp&nbsp<span>¥ {{ good.marketprice }}</span>
+                                                </div>
+                                            </div>
+                                            <section id="section1">
+                                                <button>-</button>
+                                                <span>0</span>
+                                                <button>+</button>
+                                            </section>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {#    分类和排序的隐藏内容#}
+
+{% endblock %}
+
+
+
+{% block ext_js %}
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="{% static 'blm/main/market/js/market.js' %}"></script>
 {% endblock %}
