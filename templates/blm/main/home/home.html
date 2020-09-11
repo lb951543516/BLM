@@ -52,86 +52,16 @@
 
         {#        标题选择#}
         <div class="jq22-palace">
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz5.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>美食</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz8.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>水果</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz7.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>甜点</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz6.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>送药上门</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz10.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>商超便利</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz1.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>买菜</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz2.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>海鲜</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz9.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>跑腿代购</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz3.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>鲜花绿植</h2>
-                </div>
-            </a>
-            <a href="javascript:;" class="jq22-palace-grid">
-                <div class="jq22-palace-grid-icon">
-                    <img src="{% static 'blm/main/home/img/xz4.png' %}">
-                </div>
-                <div class="jq22-palace-grid-text">
-                    <h2>超级吃货卡</h2>
-                </div>
-            </a>
+            {% for choice in choices %}
+                <a href="#" class="jq22-palace-grid">
+                    <div class="jq22-palace-grid-icon">
+                        <img src="/static/blm/main/home{{ choice.img }}">
+                    </div>
+                    <div class="jq22-palace-grid-text">
+                        <h2>{{ choice.name }}</h2>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
 
         {#        百亿补贴#}
@@ -140,45 +70,21 @@
                 <h1>百亿补贴</h1>
             </div>
             <div class="jq22-list-theme-box">
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/youhui.png' %}"
-                             style="width: 60px;margin-top: 20px;margin-bottom: 18px;margin-left: 20px">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2 class="jq22-one-six">10元优惠券</h2>
+                {% for discount in discounts %}
+                    <a href="javascript:;" class="jq22-list-item">
+                        <div class="jq22-list-theme-img">
+                            <img src="/static/blm/main/home{{ discount.img }}"
+                                 style="width: 60px;margin-top: 20px;margin-bottom: 18px;margin-left: 20px">
+                        </div>
+                        <div class="jq22-list-theme-message">
+                            <div class="jq22-flex">
+                                <div class="jq22-flex-box">
+                                    <h2 class="jq22-one-six">{{ discount.name }}</h2>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/youhui.png' %}"
-                             style="width: 60px;margin-top: 20px;margin-bottom: 18px;margin-left: 20px">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2 class="jq22-one-six">15元优惠券</h2>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/youhui.png' %}"
-                             style="width: 60px;margin-top: 20px;margin-bottom: 18px;margin-left: 20px">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2 class="jq22-one-six">20元优惠券</h2>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                {% endfor %}
             </div>
         </div>
 
@@ -194,74 +100,34 @@
                     </div>
                 </div>
                 <div class="jq22-list-theme-box jq22-list-theme-box-one">
-                    <a href="javascript:;" class="jq22-list-item">
-                        <div class="jq22-list-theme-img">
-                            <img src="{% static 'blm/main/home/img/pd-001.png' %}">
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="jq22-list-item">
-                        <div class="jq22-list-theme-img">
-                            <img src="{% static 'blm/main/home/img/pd-002.png' %}">
-                        </div>
-                    </a>
+                    {% for brand in brands %}
+                        <a href="#" class="jq22-list-item">
+                            <div class="jq22-list-theme-img">
+                                <img src="/static/blm/main/home{{ brand.img }}">
+                            </div>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
 
             {#秒杀#}
             <div class="jq22-chang-white" style="padding-bottom:0">
                 <div class="jq22-list-theme-box jq22-list-theme-box-one jq22-list-theme-box-two">
-                    <a href="javascript:;" class="jq22-list-item b-line">
-                        <div class="jq22-list-theme-message">
-                            <div class="jq22-flex">
-                                <div class="jq22-flex-box">
-                                    <h1>限时秒杀</h1>
+                    {% for activity in activities %}
+                        <a href="#" class="jq22-list-item b-line">
+                            <div class="jq22-list-theme-message">
+                                <div class="jq22-flex">
+                                    <div class="jq22-flex-box">
+                                        <h1>{{ activity.name }}</h1>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="jq22-list-theme-img">
-                            <img src="{% static 'blm/main/home/img/sml-001.png' %}">
-                            <img src="{% static 'blm/main/home/img/sml-002.png' %}">
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="jq22-list-item b-line">
-                        <div class="jq22-list-theme-message">
-                            <div class="jq22-flex">
-                                <div class="jq22-flex-box">
-                                    <h1>美食排行</h1>
-                                </div>
+                            <div class="jq22-list-theme-img">
+                                <img src="/static/blm/main/home{{ activity.img }}">
+                                <img src="/static/blm/main/home{{ activity.img2 }}">
                             </div>
-                        </div>
-                        <div class="jq22-list-theme-img">
-                            <img src="{% static 'blm/main/home/img/sml-003.png' %}">
-                            <img src="{% static 'blm/main/home/img/sml-004.png' %}">
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="jq22-list-item ">
-                        <div class="jq22-list-theme-message">
-                            <div class="jq22-flex">
-                                <div class="jq22-flex-box">
-                                    <h1>天天特价</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="jq22-list-theme-img">
-                            <img src="{% static 'blm/main/home/img/sml-005.png' %}">
-                            <img src="{% static 'blm/main/home/img/sml-006.png' %}">
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="jq22-list-item ">
-                        <div class="jq22-list-theme-message">
-                            <div class="jq22-flex">
-                                <div class="jq22-flex-box">
-                                    <h1>有趣吃货</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="jq22-list-theme-img">
-                            <img src="{% static 'blm/main/home/img/sml-007.png' %}">
-                            <img src="{% static 'blm/main/home/img/sml-008.png' %}">
-                        </div>
-                    </a>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -270,90 +136,25 @@
                 <h1>专属推荐</h1>
             </div>
             <div class="jq22-list-theme-box jq22-list-theme-box-three">
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/ad-01.png' %}">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <h3 class="jq22-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2><em>￥</em>648 <i>￥899</i></h2>
-                                <span>满折</span>
+                {% for recommend in recommends %}
+                    <a href="#" class="jq22-list-item">
+                        <div class="jq22-list-theme-img">
+                            <img src="/static/blm/main/home{{ recommend.img }}">
+                        </div>
+                        <div class="jq22-list-theme-message">
+                            <h3 class="jq22-list-theme-subtitle"> {{ recommend.name }}</h3>
+                            <div class="jq22-flex">
+                                <div class="jq22-flex-box">
+                                    <h2>
+                                        <em>￥</em>{{ recommend.now_price }}
+                                        <i>￥{{ recommend.ex_price }}</i>
+                                    </h2>
+                                    <span>{{ recommend.status }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/ad-02.png' %}">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <h3 class="jq22-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2><em>￥</em>648 <i>￥899</i></h2>
-                                <span>超值一口价</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/ad-03.png' %}">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <h3 class="jq22-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2><em>￥</em>648 <i>￥899</i></h2>
-                                <span>满折</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/ad-04.png' %}">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <h3 class="jq22-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2><em>￥</em>648 <i>￥899</i></h2>
-                                <span>超值一口价</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/ad-05.png' %}">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <h3 class="jq22-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2><em>￥</em>648 <i>￥899</i></h2>
-                                <span>满折</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="jq22-list-item">
-                    <div class="jq22-list-theme-img">
-                        <img src="{% static 'blm/main/home/img/ad-06.png' %}">
-                    </div>
-                    <div class="jq22-list-theme-message">
-                        <h3 class="jq22-list-theme-subtitle"> Levi's李维斯男士黑色Box Logo 印花短袖</h3>
-                        <div class="jq22-flex">
-                            <div class="jq22-flex-box">
-                                <h2><em>￥</em>648 <i>￥899</i></h2>
-                                <span>超值一口价</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                {% endfor %}
             </div>
         </div>
 
