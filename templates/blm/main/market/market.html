@@ -24,6 +24,7 @@
 
 {% block content %}
     <div class="swiper-container">
+        {#    顶栏显示#}
         <ul class="swiper-container-ul">
             <li class="swiper-container-ul-li actives" id="all_type">
                 全部分类 <span class="glyphicon glyphicon-chevron-down"></span>
@@ -31,23 +32,31 @@
 
             {#            全部分类的显示模块#}
             <div id="all_type_container" hidden="hidden">
-                <div>
-                    <a href="">
-                        <span>哈哈哈</span>
-                        <span>呵呵呵</span>
-                    </a>
+                <div style="padding:10px">
+                    <a class="btn btn-info" href="#" role="button" style="margin-right: 10px">1111</a>
+                    <a class="btn btn-default" href="#" role="button">2222</a>
                 </div>
             </div>
 
             <li class="swiper-container-ul-li" id="sort_rule">
                 综合排序 <span class="glyphicon glyphicon-chevron-down"></span>
             </li>
+
+            {#            综合排序的显示模块#}
+            <div id="type_sort_container" hidden="hidden">
+                <div style="padding:10px">
+                    <a class="btn btn-info" href="#" role="button" style="margin-right: 5px">价格升序</a>
+                    <a class="btn btn-default" href="#" role="button">价格降序</a>
+                </div>
+            </div>
+
         </ul>
 
 
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <div class="content" style="height: 2216px;">
+                <div class="content" style="height: 2000px;">
+                    {#左栏显示#}
                     <div id="left" class="left">
                         <ul>
                             {% for foodtype in foodtypes %}
@@ -143,10 +152,6 @@
         </div>
     </div>
 
-
-
-
-    {#    分类和排序的隐藏内容#}
 
 {% endblock %}
 

@@ -1,8 +1,11 @@
 $(function () {
     $('.content').css('height', $('.right').height());
     $('.left ul li').eq(0).addClass('active');
+
+    //当前浏览器窗口添加滚动事件
     $(window).scroll(function () {
-        if ($(window).scrollTop() >= 150) {
+        //滚动条的垂直偏移量
+        if ($(window).scrollTop() >= 40) {
             $('.swiper-container-ul').css('position', 'fixed');
             $('#all_type_container').css('top', '40px');
             $('.left').css('position', 'fixed');
@@ -16,7 +19,7 @@ $(function () {
         ;
         //滚动到标杆位置,左侧导航加active
         $('.right ul li').each(function () {
-            var target = parseInt($(this).offset().top - $(window).scrollTop() - 150);
+            var target = parseInt($(this).offset().top - $(window).scrollTop() - 40);
             //alert(target);
             var i = $(this).index();
             if (target <= 0) {
@@ -41,5 +44,6 @@ $(function () {
 
     $('#sort_rule').click(function () {
         $(this).find('span').toggleClass('glyphicon glyphicon-chevron-up glyphicon glyphicon-chevron-down');
+        $('#type_sort_container').toggle();
     })
 })
