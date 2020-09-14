@@ -34,3 +34,10 @@ class BlmGoods(models.Model):
 
     class Meta:
         db_table = 'blm_goods'
+
+
+class BlmOrderType(models.Model):
+    type_name = models.CharField(max_length=16)
+
+    class Meta:
+        db_table = 'blm_ordertype'

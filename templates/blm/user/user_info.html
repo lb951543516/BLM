@@ -1,0 +1,48 @@
+{% extends 'base_user.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'blm/main/mine/css/mine.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    <title>
+        饱了吗个人资料
+    </title>
+{% endblock %}
+
+
+{% block header %}
+    <div style="padding-top: 12px">
+        &nbsp
+        <a href="{% url 'blmmine:mine' %}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color: white"></span>
+        </a>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+    <img src="#" class="img-circle" width="120px">
+    <form class="form-horizontal" style="margin-top: 10px">
+        <!--    ID-->
+        <div class="form-group">
+            <label for="userid" class="col-sm-2 col-md-offset-2 control-label">ID</label>
+            <div class="col-sm-4">
+                <input type="text" name="username" class="form-control" id="userid"
+                       placeholder="{{ user_info.id }}" disabled>
+            </div>
+        </div>
+        <!--    用户名-->
+        <div class="form-group">
+            <label for="account" class="col-sm-2 col-md-offset-2 control-label">用户名</label>
+            <div class="col-sm-4">
+                <input type="text" name="username" class="form-control" id="account"
+                       placeholder="{{ user_info.username }}" disabled>
+            </div>
+        </div>
+
+{% endblock %}

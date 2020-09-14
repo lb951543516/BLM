@@ -5,7 +5,26 @@
     {{ block.super }}
 {% endblock %}
 
+
+{% block header %}
+    <div class="" style="padding-top: 12px">
+        &nbsp
+        <a href="{% url 'blmmine:mine' %}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color: white"></span>
+        </a>
+    </div>
+{% endblock %}
+
+
 {% block content %}
+    {% if error == 1 %}
+        <div class="alert alert-danger" role="alert" style="text-align: center">用户名不存在！</div>
+    {% endif %}
+    {% if error == 0 %}
+        <div class="alert alert-danger" role="alert" style="text-align: center">密码有误！</div>
+    {% endif %}
+
+
     <div style="margin-top: 70px"></div>
     <h2 align="center">登录</h2>
     <div style="margin-top: 40px"></div>
@@ -14,7 +33,7 @@
         {#       用户名#}
         <div class="container">
             <label class="col-sm-2 control-label">用户名</label>
-            <input type="text" name="account" placeholder="Account" class="form-control"
+            <input type="text" name="username" placeholder="Account" class="form-control"
                    style="width: 220px;display: inline">
         </div>
 
@@ -52,4 +71,7 @@
         </div>
     </form>
 
+{% endblock %}
+
+{% block ext_js %}
 {% endblock %}

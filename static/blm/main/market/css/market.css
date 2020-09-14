@@ -112,10 +112,10 @@ a, button, input, button, span, div {
     text-align: center;
 }
 
-.actives {
-    /*border-bottom: 1px solid #3190e8;*/
-    color: #3190e8;
-}
+/*.actives {*/
+/*    !*border-bottom: 1px solid #3190e8;*!*/
+/*    color: #3190e8;*/
+/*}*/
 
 .content {
     width: 100%;

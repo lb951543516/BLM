@@ -25,10 +25,18 @@
     {#    个人基础信息#}
     <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
         <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
+            {% if request.session.username %}
+                <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
+                     style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
+                <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
+                <label style="margin-left: 10px">手机号</label>
+            {% else %}
+                <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
+                     style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
+                <label style="margin-top: 32px;margin-left: 15px;font-size: 22px">
+                    <a href="{% url 'user:login' %}" style="color: #337ab7">登录</a>
+                </label><br>
+            {% endif %}
         </div>
     </div>
 
@@ -51,9 +59,11 @@
             <label style="margin-top: 2px;margin-left: 5px;padding-bottom: 5px">常用功能</label><br>
 
             <div style="display: inline;float: left;margin-left: 5px">
-                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <a href="{% url 'user:userinfo' %}" class="jq22-tabBar-item jq22-tabBar-item-active"
+                   style="width: 85px;color: #337ab7">
                 <span class="jq22-tabBar-item-icon">
-                    <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true" style="width: 20px"></span>
+                    <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"
+                          style="width: 20px;padding-left: 3px"></span>
                 </span>
                     <span class="jq22-tabBar-item-text">个人资料</span>
                 </a>
@@ -62,7 +72,8 @@
             <div style="display: inline;float: left">
                 <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
                 <span class="jq22-tabBar-item-icon">
-                    <span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" style="width: 20px"></span>
+                    <span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"
+                          style="width: 20px;padding-left: 3px"></span>
                 </span>
                     <span class="jq22-tabBar-item-text">订单详情</span>
                 </a>

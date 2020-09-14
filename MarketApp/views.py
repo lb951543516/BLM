@@ -1,36 +1,58 @@
 from django.shortcuts import render
 
 # Create your views here.
-from MarketApp.models import BlmFoodType, BlmGoods
+from MarketApp.models import BlmFoodType, BlmGoods, BlmOrderType
 
 
 def market(request):
+    # 获取全部种类
     foodtypes = BlmFoodType.objects.all()
-    goods1 = BlmGoods.objects.filter(categoryid='104749')[0:4]
-    goods2 = BlmGoods.objects.filter(categoryid='104747')[0:4]
-    goods3 = BlmGoods.objects.filter(categoryid='103532')[0:4]
-    goods4 = BlmGoods.objects.filter(categoryid='103581')[0:4]
-    goods5 = BlmGoods.objects.filter(categoryid='103536')[0:4]
-    goods6 = BlmGoods.objects.filter(categoryid='103549')[0:4]
-    goods7 = BlmGoods.objects.filter(categoryid='103541')[0:4]
-    goods8 = BlmGoods.objects.filter(categoryid='103557')[0:4]
-    goods9 = BlmGoods.objects.filter(categoryid='103569')[0:4]
-    goods10 = BlmGoods.objects.filter(categoryid='103575')[0:4]
-    goods11 = BlmGoods.objects.filter(categoryid='104958')[0:4]
+
+    # 根据种类id进行第一次查询
+    typeid = request.GET.get('typeid', '104749')
+    good_list = BlmGoods.objects.filter(categoryid=typeid)
+
+    foodtype = BlmFoodType.objects.filter(typeid=typeid)[0]
+    childtypename = foodtype.childtypenames
+    child_list = childtypename.split('#')
+
+    child_name_list = []
+    for child in child_list:
+        child_name = child.split(':')
+        child_name_list.append(child_name)
+
+    # 根据分类id进行第二次查询
+    childcid = request.GET.get('childcid', '0')
+    if childcid == '0':
+        pass
+    else:
+        good_list = good_list.filter(childcid=childcid)
+
+    # 根据排序类型进行第三次查询
+    # 1-5 分别是 默认 价格升序、降序 销量升序、降序
+    ordertypes = BlmOrderType.objects.all()
+
+    orderid = int(request.GET.get('ordertype', 1))
+    if orderid == 1:
+        pass
+    elif orderid == 2:
+        good_list = good_list.order_by('price')
+    elif orderid == 3:
+        good_list = good_list.order_by('-price')
+    elif orderid == 4:
+        good_list = good_list.order_by('productnum')
+    elif orderid == 5:
+        good_list = good_list.order_by('-productnum')
 
     context = {
         'foodtypes': foodtypes,
-        'goods1': goods1,
-        'goods2': goods2,
-        'goods3': goods3,
-        'goods4': goods4,
-        'goods5': goods5,
-        'goods6': goods6,
-        'goods7': goods7,
-        'goods8': goods8,
-        'goods9': goods9,
-        'goods10': goods10,
-        'goods11': goods11,
+        'good_list': good_list,
+        'child_name_list': child_name_list,
+        'typeid': typeid,
+        'childcid': childcid,
+        'orderid': orderid,
+        'ordertypes': ordertypes,
+
     }
 
     return render(request, 'blm/main/market/market.html', context=context)
