@@ -61,7 +61,20 @@ $('#reg_phone').blur(function () {
     }
 });
 
-
+// 点击头像进行上传，可以预览图片
+$(function () {
+    $('#reg_img').click(function () {
+        $('#img-upload').click()
+    })
+})
+function reads(obj) {
+    var file = obj.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function (ev) {
+        $("#reg_img").attr("src", ev.target.result);
+    }
+}
 
 
 // // click

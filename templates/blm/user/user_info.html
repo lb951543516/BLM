@@ -28,36 +28,20 @@
 
     <form class="form-horizontal" style="margin-top: 10px" action="{% url 'user:userinfo' %}"
           method="post" enctype="multipart/form-data">
-
-        {% if user.userImg %}
-            <img src="/static/upload_to/{{ user.userImg }}" class="img-circle"
-                 style="width: 100px;margin-top: 10px;margin-left: 10px;float: left" id="reg_img">
-        {% else %}
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 100px;margin-top: 10px;margin-left: 10px;float: left" id="reg_img">
-        {% endif %}
-
-        <button style="clear: both;margin-top: 80px" type="button" class="btn btn-default" data-toggle="modal"
-                data-target=".bs-example-modal-sm">选择头像
-        </button>
-
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document" style="margin-top: 170px">
-                <div class="modal-content">
-                    {#头像#}
-                    <div class="container" style="margin-left: 15px;margin-top: 30px;margin-bottom: 30px">
-                        <div class="upload imgLog2">
-                            <span><i class="glyphicon glyphicon-open"></i>上传头像</span>
-                        </div>
-                        <span class="header_hint"></span>
-                    </div>
-                </div>
-            </div>
+        <div>
+            {% if user.userImg %}
+                <img src="/static/upload_to/{{ user.userImg }}" class="img-circle"
+                     style="width: 100px;margin-top: 5px;margin-left: 15px;float: left" id="reg_img">
+                <input type="file" id="img-upload" name="header" style="display: none" onchange="reads(this)"/>
+            {% else %}
+                <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
+                     style="width: 100px;margin-top: 5px;margin-left: 15px;float: left" id="reg_img">
+                <input type="file" id="img-upload" name="header" style="display: none" onchange="reads(this)"/>
+            {% endif %}
         </div>
 
-
         {#       用户名#}
-        <div class="container" style="margin-left: 18px;margin-top: 20px">
+        <div class="container" style="margin-left: 18px;margin-top: 120px">
             <label class="col-sm-2 control-label">用户名</label>
             <input type="text" name="name" value="{{ user.userName }}" placeholder="Account(6~12)"
                    class="form-control" id="reg_user"
@@ -72,23 +56,6 @@
                    class="form-control" id="reg_nick"
                    style="width: 220px;display: inline">
             <span class="nick_hint"></span>
-        </div>
-
-        {#               密码#}
-        <div class="container" style="margin-left: 19px;margin-top: 15px">
-            <label class="col-sm-2 control-label">新密码</label>
-            <input type="password" name="password" placeholder="英文、数字、下划线(6~12)" class="form-control" id="reg_password"
-                   style="width: 220px;display: inline">
-            <span class="password_hint"></span>
-        </div>
-
-        {#               确认密码#}
-        <div class="container" style="margin-left: 5px;margin-top: 15px">
-            <label class="col-sm-2 control-label">确认密码</label>
-            <input type="password" name="c_password" placeholder="确认密码" class="form-control"
-                   id="reg_confirm"
-                   style="width: 220px;display: inline">
-            <span class="confirm_hint"></span>
         </div>
 
         {#        手机号#}
@@ -109,6 +76,23 @@
                    id="reg_emali"
                    style="width: 220px;display: inline">
             <span class="email_hint"></span>
+        </div>
+
+        {#               密码#}
+        <div class="container" style="margin-left: 19px;margin-top: 15px">
+            <label class="col-sm-2 control-label">新密码</label>
+            <input type="password" name="password" placeholder="英文、数字、下划线(6~12)" class="form-control" id="reg_password"
+                   style="width: 220px;display: inline">
+            <span class="password_hint"></span>
+        </div>
+
+        {#               确认密码#}
+        <div class="container" style="margin-left: 5px;margin-top: 15px">
+            <label class="col-sm-2 control-label">确认密码</label>
+            <input type="password" name="c_password" placeholder="确认密码" class="form-control"
+                   id="reg_confirm"
+                   style="width: 220px;display: inline">
+            <span class="confirm_hint"></span>
         </div>
 
         {#        原密码#}
@@ -135,5 +119,4 @@
 
 {% block ext_js %}
     <script src="{% static 'blm/user/userinfo/js/userinfo.js' %}"></script>
-    <script src="{% static 'blm/user/userinfo/js/index.js' %}"></script>
 {% endblock %}
