@@ -26,10 +26,20 @@
     <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
         <div class="panel-body" style="padding: 5px">
             {% if request.session.username %}
-                <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                     style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-                <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-                <label style="margin-left: 10px">手机号</label>
+                {% if url_img %}
+                    <img src="/static/upload_to/{{ url_img }}" class="img-circle"
+                         style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
+                {% else %}
+                    <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
+                         style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
+                {% endif %}
+                <label style="margin-top: 18px;margin-left: 10px">{{ username }}</label>
+
+                <a href="{% url 'user:logout' %}">
+                <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"
+                      style="width: 20px;float: right"></span>
+                </a><br>
+                <label style="margin-left: 10px">{{ user_phone }}</label>
             {% else %}
                 <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
                      style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
@@ -148,9 +158,9 @@
             <div style="display: inline;float: left">
                 <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
                 <span class="jq22-tabBar-item-icon">
-                    <span class="glyphicon glyphicon glyphicon-cog" aria-hidden="true" style="width: 20px"></span>
+                    <span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true" style="width: 20px"></span>
                 </span>
-                    <span class="jq22-tabBar-item-text">系统设置</span>
+                    <span class="jq22-tabBar-item-text">私信消息</span>
                 </a>
             </div>
 

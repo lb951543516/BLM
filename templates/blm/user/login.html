@@ -17,61 +17,55 @@
 
 
 {% block content %}
-    {% if error == 1 %}
-        <div class="alert alert-danger" role="alert" style="text-align: center">用户名不存在！</div>
-    {% endif %}
-    {% if error == 0 %}
-        <div class="alert alert-danger" role="alert" style="text-align: center">密码有误！</div>
-    {% endif %}
-
-
     <div style="margin-top: 70px"></div>
     <h2 align="center">登录</h2>
     <div style="margin-top: 40px"></div>
 
-    <form class="form-horizontal" action="{% url 'user:login' %}" method="POST" enctype="multipart/form-data">
-        {#       用户名#}
-        <div class="container">
-            <label class="col-sm-2 control-label">用户名</label>
-            <input type="text" name="username" placeholder="Account" class="form-control"
-                   style="width: 220px;display: inline">
-        </div>
+    {#       用户名#}
+    <div class="container">
+        <label class="col-sm-2 control-label">用户名</label>
+        <input type="text" name="username" placeholder="英文、数字、下划线(6~12)" class="form-control" id="reg_user"
+               style="width: 220px;display: inline">
+        <span class="user_hint"></span>
+    </div>
 
-        <div class="form-group">
-            <div class="col-sm-8"></div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-8"></div>
-        </div>
+    <div class="form-group">
+        <div class="col-sm-8"></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8"></div>
+    </div>
 
-        {#       密码#}
-        <div class="container">
-            <label class="col-sm-2 control-label">密&nbsp&nbsp&nbsp&nbsp码</label>
-            <input type="password" name="password" placeholder="Password" class="form-control"
-                   style="width: 220px;display: inline">
-        </div>
+    {#       密码#}
+    <div class="container">
+        <label class="col-sm-2 control-label">密&nbsp&nbsp&nbsp&nbsp码</label>
+        <input type="password" name="password" placeholder="英文、数字、下划线(6~12)" class="form-control" id="reg_password"
+               style="width: 220px;display: inline">
+        <span class="password_hint"></span>
+    </div>
 
-        <div class="form-group">
-            <div class="col-sm-8"></div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-8"></div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-8"></div>
-        </div>
+    <div class="form-group">
+        <div class="col-sm-8"></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8"></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-8"></div>
+    </div>
 
-        <div class="container">
-            <label class="col-sm-2 control-label"></label>
-            <button type="submit" id="toast" class="btn btn-info" style="margin-left: 70px">登录</button>
-            &nbsp
-            <a href="{% url 'user:register' %}">
-                <button type="button" class="btn btn-info" style="margin-left: 20px">注册</button>
-            </a>
-        </div>
-    </form>
+    <div class="container">
+        <label class="col-sm-2 control-label"></label>
+        <button id="toast" class="btn btn-info">登录</button>
+        &nbsp
+        <a href="{% url 'user:register' %}">
+            <button type="button" class="btn btn-info" style="margin-left: 20px">注册</button>
+        </a>
+    </div>
 
 {% endblock %}
 
 {% block ext_js %}
+    <script src="{% static 'blm/user/login/js/login.js' %}"></script>
+    <script src="{% static 'blm/user/login/js/base64.js' %}"></script>
 {% endblock %}

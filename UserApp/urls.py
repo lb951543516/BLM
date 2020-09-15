@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
 
     # 个人资料
-    url(r'^userinfo/', views.userinfo, name='userinfo'),
+    url(r'^userinfo/', views.user_info, name='userinfo'),
 
     # 退出
     url(r'^logout/', views.logout, name='logout'),

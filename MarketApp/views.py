@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from MarketApp.models import BlmFoodType, BlmGoods, BlmOrderType
+from libs.utils import login_required
 
 
 def market(request):
