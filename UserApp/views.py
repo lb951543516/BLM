@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from UserApp.models import User
+from UserApp.models import User, Address
 from libs.utils import login_required
 
 
@@ -149,3 +149,25 @@ def logout(request):
     # 删除session
     request.session.flush()
     return redirect(reverse('blmmine:mine'))
+
+
+@login_required
+def address(request):
+    username = request.session.get('username')
+    user = User.objects.filter(userName=username)[0]
+
+    if request.method == "GET":
+        addrs = Address.objects.filter(userId=user.id)
+        context = {
+            'addrs': addrs
+        }
+        return render(request, 'blm/user/address.html', context=context)
+
+    else:
+        consignee = request.POST.get('consignee')
+        userPhone = request.POST.get('phone')
+        detailAdd = request.POST.get('address')
+
+        addr = Address(userId=user.id, consignee=consignee, userPhone=userPhone, detailAdd=detailAdd)
+        addr.save()
+        return redirect(reverse('user:address'))

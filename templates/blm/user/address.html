@@ -1,0 +1,101 @@
+{% extends 'base_user.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+{% endblock %}
+
+
+{% block title %}
+    <title>
+        饱了吗个人地址
+    </title>
+{% endblock %}
+
+
+{% block header %}
+    <div style="padding-top: 12px">
+        &nbsp
+        <a href="{% url 'blmmine:mine' %}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color: white"></span>
+        </a>
+        <span style="color: white;font-size: 15px;margin-left: 130px">个人地址</span>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    {#    显示地址#}
+    {% for addr in addrs %}
+        <div class="panel panel-default" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 4px">
+            <div class="panel-body" style="padding: 5px">
+                <label style="margin-left: 10px">{{ addr.detailAdd }}</label><br>
+                <label style="margin-left: 10px">{{ addr.consignee }}</label>
+                <label style="margin-left: 10px">{{ addr.userPhone }}</label>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="form-group" style="margin-bottom: 150px;display: block">
+        <div class="col-sm-8"></div>
+    </div>
+
+    <div class="panel panel-default" style="position: fixed;bottom: 33px;width: 380px">
+        <div class="panel-body">
+            <a href="" data-toggle="modal" data-target="#myModal">新增地址</a>
+        </div>
+    </div>
+
+    {#    添加地址#}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="text-align: center">添加新地址</h4>
+                </div>
+
+                <form class="form-horizontal" action="{% url 'user:address' %}"
+                      method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        {#       收货人#}
+                        <div class="container">
+                            <label class="col-sm-0 control-label" style="margin-top: 15px;margin-left: 14px">收货人</label>&nbsp
+                            <input type="text" name="consignee" placeholder="收货人" class="form-control"
+                                   id="reg_consignee"
+                                   style="width: 200px;display: inline">
+                            <span class="consignee_hint"></span>
+                        </div>
+
+                        {#        手机号#}
+                        <div class="container">
+                            <label class="col-sm-0 control-label" style="margin-top: 15px;margin-left: 14px">手机号</label>&nbsp
+                            <input type="text" name="phone" placeholder="手机号" class="form-control" id="reg_phone"
+                                   style="width: 200px;display: inline">
+                            <span class="phone_hint"></span>
+                        </div>
+
+                        {#        详细地址#}
+                        <div class="container">
+                            <label class="col-sm-0 control-label" style="margin-top: 15px">详细地址</label>&nbsp
+                            <input type="" name="address" placeholder="详细地址" class="form-control" id="reg_address"
+                                   style="width: 200px;display: inline">
+                            <span class="address_hint"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" id="toast" class="btn btn-primary" disabled>保存</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block ext_js %}
+    <script src="{% static 'blm/user/address/js/address.js' %}"></script>
+{% endblock %}

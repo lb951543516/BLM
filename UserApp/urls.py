@@ -12,6 +12,9 @@ urlpatterns = [
     # 个人资料
     url(r'^userinfo/', views.user_info, name='userinfo'),
 
+    # 地址管理
+    url(r'^address/', views.address, name='address'),
+
     # 退出
     url(r'^logout/', views.logout, name='logout'),
 ]

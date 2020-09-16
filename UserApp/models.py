@@ -24,3 +24,13 @@ class User(models.Model):
 
     class Meta:
         db_table = 'user'
+
+
+class Address(models.Model):
+    userId = models.IntegerField()
+    consignee = models.CharField(max_length=16)
+    userPhone = models.CharField(max_length=20)
+    detailAdd = models.CharField(max_length=128)
+
+    class Meta:
+        db_table = 'address'
