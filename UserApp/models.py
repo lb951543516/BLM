@@ -18,9 +18,11 @@ class User(models.Model):
     # 邮箱
     userEmail = models.CharField(max_length=64, unique=True)
     # 等级
-    userRank = models.CharField(max_length=16)
+    userRank = models.CharField(max_length=16, default='普通用户')
     # touken验证值，每次登陆之后都会更新
-    userToken = models.CharField(max_length=50)
+    userToken = models.CharField(max_length=256)
+    # 是否邮箱激活帐号
+    active = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'user'

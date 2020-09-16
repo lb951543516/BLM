@@ -1,22 +1,23 @@
-var user_Boolean = false;
-var password_Boolean = false;
-var varconfirm_Boolean = false;
-// var emaile_Boolean = false;
-var Mobile_Boolean = false;
+var user_Boolean = true;
+var password_Boolean = true;
+var varconfirm_Boolean = true;
+var email_Boolean = true;
+var Mobile_Boolean = true;
+var old_password_Boolean = false;
 
-
-$('#reg_user').blur(function () {
-    if ((/^[a-zA-Z0-9_-]{6,12}$/).test($("#reg_user").val())) {
-        $('.user_hint').html("✔").css("color", "green");
+//nickname
+$('#reg_nick').blur(function () {
+    if ((/^.{0,20}$/).test($("#reg_nick").val())) {
+        $('.nick_hint').html("✔").css("color", "green");
         user_Boolean = true;
     } else {
-        $('.user_hint').html("×").css("color", "red");
+        $('.nick_hint').html("×").css("color", "red");
         user_Boolean = false;
     }
 });
 // password
 $('#reg_password').blur(function () {
-    if ((/^[a-zA-Z0-9_-]{6,12}$/).test($("#reg_password").val())) {
+    if ((/^[a-zA-Z0-9_-]{6,12}$/).test($("#reg_password").val()) || $("#reg_password").val().length == 0) {
         $('.password_hint').html("✔").css("color", "green");
         password_Boolean = true;
     } else {
@@ -37,18 +38,17 @@ $('#reg_confirm').blur(function () {
     }
 });
 
-//
-// // Email
-// $('.reg_email').blur(function(){
-//   if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".reg_email").val())){
-//     $('.email_hint').html("✔").css("color","green");
-//     emaile_Boolean = true;
-//   }else {
-//     $('.email_hint').html("×").css("color","red");
-//     emaile_Boolean = false;
-//   }
-// });
 
+// Email
+$('.reg_email').blur(function () {
+    if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".reg_email").val())) {
+        $('.email_hint').html("✔").css("color", "green");
+        email_Boolean = true;
+    } else {
+        $('.email_hint').html("×").css("color", "red");
+        email_Boolean = false;
+    }
+});
 
 // phone
 $('#reg_phone').blur(function () {
@@ -61,12 +61,24 @@ $('#reg_phone').blur(function () {
     }
 });
 
+// old_pwd
+$('#reg_old_password').blur(function () {
+    if ((/^[a-zA-Z0-9_-]{6,12}$/).test($("#reg_old_password").val())) {
+        $('.old_password_hint').html("✔").css("color", "green");
+        old_password_Boolean = true;
+    } else {
+        $('.old_password_hint').html("×").css("color", "red");
+        old_password_Boolean = false;
+    }
+});
+
 // 点击头像进行上传，可以预览图片
 $(function () {
     $('#reg_img').click(function () {
         $('#img-upload').click()
     })
 })
+
 function reads(obj) {
     var file = obj.files[0];
     var reader = new FileReader();
@@ -76,6 +88,13 @@ function reads(obj) {
     }
 }
 
+$('.form-control').blur(function () {
+    if (user_Boolean && password_Boolean && Mobile_Boolean && email_Boolean && old_password_Boolean && varconfirm_Boolean == true) {
+        $('#toast').attr("disabled", false);
+    } else {
+        $('#toast').attr("disabled", true);
+    }
+});
 
 // // click
 // $('.red_button').click(function () {

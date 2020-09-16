@@ -130,4 +130,28 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# 上传文件的保存位置
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/upload_to')
+
+# 邮箱
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'lb13029868285@163.com'
+# 设定发送的昵称
+DEFAULT_FROM_EMAIL = 'lb <lb13029868285@163.com>'
+# 授权码
+EMAIL_HOST_PASSWORD = 'IGKRUWHAIPFLRWRN'
+EMAIL_USE_SSL = True
+
+# 缓存
+CACHES = {
+    'default': {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        'KEY_PREFIX': 'BlmApp',
+    }
+}

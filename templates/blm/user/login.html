@@ -17,52 +17,41 @@
 
 
 {% block content %}
+    {% if error == 0 %}
+        <div class="alert alert-danger" role="alert" style="text-align: center">用户名或密码错误！</div>
+    {% endif %}
+    {% if error == 1 %}
+        <div class="alert alert-danger" role="alert" style="text-align: center">帐号未激活！</div>
+    {% endif %}
+
     <div style="margin-top: 70px"></div>
     <h2 align="center">登录</h2>
     <div style="margin-top: 40px"></div>
 
-    {#       用户名#}
-    <div class="container">
-        <label class="col-sm-2 control-label">用户名</label>
-        <input type="text" name="username" placeholder="英文、数字、下划线(6~12)" class="form-control" id="reg_user"
-               style="width: 220px;display: inline">
-        <span class="user_hint"></span>
-    </div>
+    <form class="form-horizontal" action="{% url 'user:login' %}" method="post" enctype="multipart/form-data">
+        {#       用户名#}
+        <div class="container">
+            <label class="col-sm-2 control-label">用户名</label>
+            <input type="text" name="username" placeholder="用户名" class="form-control" id="log_user"
+                   style="width: 220px;display: inline">
+        </div>
 
-    <div class="form-group">
-        <div class="col-sm-8"></div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8"></div>
-    </div>
+        {#       密码#}
+        <div class="container" style="margin-top: 20px">
+            <label class="col-sm-2 control-label">密&nbsp&nbsp&nbsp&nbsp码</label>
+            <input type="password" name="password" placeholder="密码" class="form-control" id="log_password"
+                   style="width: 220px;display: inline">
+        </div>
 
-    {#       密码#}
-    <div class="container">
-        <label class="col-sm-2 control-label">密&nbsp&nbsp&nbsp&nbsp码</label>
-        <input type="password" name="password" placeholder="英文、数字、下划线(6~12)" class="form-control" id="reg_password"
-               style="width: 220px;display: inline">
-        <span class="password_hint"></span>
-    </div>
-
-    <div class="form-group">
-        <div class="col-sm-8"></div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8"></div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-8"></div>
-    </div>
-
-    <div class="container">
-        <label class="col-sm-2 control-label"></label>
-        <button id="toast" class="btn btn-info">登录</button>
-        &nbsp
-        <a href="{% url 'user:register' %}">
-            <button type="button" class="btn btn-info" style="margin-left: 20px">注册</button>
-        </a>
-    </div>
-
+        <div class="container" style="margin-top: 40px">
+            <label class="col-sm-2 control-label"></label>
+            <button id="toast" type="submit" class="btn btn-info" style="margin-left: 70px">登录</button>
+            &nbsp
+            <a href="{% url 'user:register' %}">
+                <button type="button" class="btn btn-info" style="margin-left: 20px">注册</button>
+            </a>
+        </div>
+    </form>
 {% endblock %}
 
 {% block ext_js %}

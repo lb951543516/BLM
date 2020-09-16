@@ -9,6 +9,12 @@ urlpatterns = [
     # 注册
     url(r'^register/', views.register, name='register'),
 
+    # 注册检查
+    url(r'^regcheck/', views.reg_check, name='regcheck'),
+
+    # 邮箱，帐号激活
+    url(r'^beactive/', views.beactive, name='beactive'),
+
     # 个人资料
     url(r'^userinfo/', views.user_info, name='userinfo'),
 

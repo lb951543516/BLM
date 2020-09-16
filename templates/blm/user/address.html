@@ -29,9 +29,10 @@
     {% for addr in addrs %}
         <div class="panel panel-default" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 4px">
             <div class="panel-body" style="padding: 5px">
-                <label style="margin-left: 10px">{{ addr.detailAdd }}</label><br>
-                <label style="margin-left: 10px">{{ addr.consignee }}</label>
-                <label style="margin-left: 10px">{{ addr.userPhone }}</label>
+                <label style="margin-left: 5px">{{ addr.detailAdd }}</label><br>
+                <span style="margin-left: 6px">{{ addr.consignee }}</span>
+                <span style="margin-left: 10px">{{ addr.userPhone }}</span>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" style="float: right;color: #337ab7"></span>
             </div>
         </div>
     {% endfor %}
@@ -42,7 +43,7 @@
 
     <div class="panel panel-default" style="position: fixed;bottom: 33px;width: 380px">
         <div class="panel-body">
-            <a href="" data-toggle="modal" data-target="#myModal">新增地址</a>
+            <a href="" data-toggle="modal" data-target="#myModal" style="color: #337ab7">新增地址</a>
         </div>
     </div>
 
