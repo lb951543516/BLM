@@ -22,70 +22,32 @@
 
 
 {% block content %}
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
+    {% for car in cars %}
+        <div class="panel panel-default" style="margin:8px;margin-bottom: 0px">
+            <div class="panel-body" style="padding: 5px">
+                <div class="item">
+                    <div class="item-left">
+                        <div class="item-img"><img src="images/p1.jpg"></div>
+                    </div>
+                    <div class="item-right">
+                        <div class="title">{{ car.c_good.productlongname }}</div>
+                        <p class="detailTag"><span>精选</span></p>
+                        <div class="price">¥ {{ car.c_good.price }}
+                            <span>¥ {{ car.c_good.marketprice }}</span>
+                        </div>
+                    </div>
+                    <section id="section1">
+                        <button class="reduce" c_id="{{ car.id }}">-</button>
+                        <span g_id="{{ car.c_good_id }}">{{ car.g_num }}</span>
+                        <button class="add" c_id="{{ car.id }}">+</button>
+                    </section>
+                    <a href="{% url 'blmcar:deletegood' %}?cid={{ car.id }}" class="glyphicon glyphicon-trash"
+                       aria-hidden="true"
+                       style="color: grey;float: right;margin-top: 20px"></a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
-    <div class="panel panel-default" style="margin:8px;margin-bottom: 12px">
-        <div class="panel-body" style="padding: 5px">
-            <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
-                 style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
-            <label style="margin-top: 18px;margin-left: 10px">用户名</label><br>
-            <label style="margin-left: 10px">手机号</label>
-        </div>
-    </div>
+    {% endfor %}
 
     <div class="form-group" style="margin-bottom: 150px;display: block">
         <div class="col-sm-8"></div>
@@ -93,7 +55,13 @@
 
     <div class="panel panel-default" style="position: fixed;bottom: 33px;width: 380px">
         <div class="panel-body">
-            Basic panel example
+            全选
+            <span class="glyphicon glyphicon-yen" aria-hidden="true">:&nbsp{{ money }}</span>
+            {% if can_pay %}
+                <a href="{% url 'blmcar:pay' %}?uid={{ u_id }}" style="float: right;padding-right: 5px">结算</a>
+            {% else %}
+                <a href="{% url 'user:address' %}" style="float: right;padding-right: 5px">结算</a>
+            {% endif %}
         </div>
     </div>
 
@@ -101,5 +69,5 @@
 
 
 {% block ext_js %}
-
+    <script src="{% static 'blm/main/car/js/car.js' %}"></script>
 {% endblock %}

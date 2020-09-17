@@ -1,7 +1,131 @@
 #gwc_icon {
-    color: #337ab7;
+    color: #337ab7
 }
 
 #gwc_gwc {
     color: #337ab7;
+}
+
+.item {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.item-left {
+    float: left;
+}
+
+.item-right {
+    float: left;
+    padding: 0;
+    padding-left: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 30px;
+
+}
+
+.item-ico {
+    width: 30px;
+    height: 30px;
+    margin: 20px 0 0 0;
+    float: left;
+    padding: 0;
+}
+
+.item-img {
+    width: 110px;
+    height: 75px;
+    background: #eee;
+}
+
+.item-img img {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    margin: 0.1rem 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 0.38rem;
+    width: 100px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.subtitle {
+    width: 70px;
+    height: 20px;
+    margin-top: 10px;
+    background: #eee;
+}
+
+.price {
+    width: 80px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #f60002;
+}
+
+.price > span {
+    text-decoration: line-through;
+    color: grey;
+}
+
+
+.detailTag {
+    margin: 0.2rem 0;
+}
+
+.detailTag span {
+    border: 0.05rem solid red;
+    border-radius: 0.15rem;
+    padding: 0 0.1rem;
+    color: white;
+    background: red;
+    margin-right: 0.3rem;
+}
+
+.detailTag span:first-child {
+    background: white;
+    color: red;
+}
+
+/**添加到购物车****/
+#section1 {
+    margin-top: 30px;
+    margin-left: 30px;
+    right: 0.6rem;
+    bottom: 0.8rem;
+    height: 10px;
+    border-radius: 1rem;
+}
+
+#section1 > button {
+    background: white;
+    border: 1px solid orange;
+    border-radius: 1111px;
+    color: red;
+    display: inline-block;
+    text-align: center;
+    line-height: 0.05rem;
+    font-weight: 900;
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+#section1 > span {
+    /*display: inline-block;*/
+    width: 0.8rem;
+    text-align: center;
+    line-height: 0.4rem;
 }

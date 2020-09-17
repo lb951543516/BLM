@@ -221,6 +221,7 @@ a, button, input, button, span, div {
     width: 80px;
     height: 20px;
     margin-top: 10px;
+    margin-right: 10px;
     font-size: 13px;
     font-weight: normal;
     color: #f60002;
@@ -285,13 +286,13 @@ a, button, input, button, span, div {
     text-align: center;
     line-height: 0.05rem;
     font-weight: 900;
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 #section1 > span {
-    display: inline-block;
-    width: 0.4rem;
+    /*display: inline-block;*/
+    width: 0.6rem;
     text-align: center;
     line-height: 0.4rem;
 }

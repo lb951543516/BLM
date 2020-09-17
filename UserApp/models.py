@@ -33,6 +33,7 @@ class Address(models.Model):
     consignee = models.CharField(max_length=16)
     userPhone = models.CharField(max_length=20)
     detailAdd = models.CharField(max_length=128)
+    isselect = models.BooleanField(default=False)
 
     class Meta:
         db_table = 'address'

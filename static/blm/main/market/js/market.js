@@ -62,3 +62,42 @@ $(function () {
         $('#sort_rule > span').attr('class', 'glyphicon glyphicon-chevron-down');
     })
 })
+
+
+// // 显示添加商品数量
+// $(function () {
+//     //    获取商品id
+//     var g_id = $('#section1>span').attr('g_id')
+//     $.get('/blmmarket/goodnum/',
+//         {'g_id': g_id},
+//         function (data) {
+//             $('#section1>span').text(data['g_num'])
+//         }
+//     )
+// })
+
+//    点击 加号添加到购物车
+$('.addtocar').click(function () {
+    //    获取商品id
+    var g_id = $(this).attr('g_id')
+    var button = $(this)
+    $.get('/blmcar/addtocar/',
+        {'g_id': g_id},
+        function (data) {
+            button.prev().text(data['g_num'])
+        }
+    )
+})
+//    点击 减号添加到购物车
+$('.reducetocar').click(function () {
+    //    获取商品id
+    var g_id = $(this).attr('g_id')
+    var button = $(this)
+    $.get('/blmcar/reducetocar/',
+        {'g_id': g_id},
+        function (data) {
+            button.next().text(data['g_num'])
+        }
+    )
+})
+

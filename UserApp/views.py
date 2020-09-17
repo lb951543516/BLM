@@ -10,6 +10,7 @@ from UserApp.models import User, Address
 from libs.utils import login_required, send_email
 
 
+# 登录
 def login(request):
     if request.method == "GET":
         return render(request, 'blm/user/login.html')
@@ -38,6 +39,7 @@ def login(request):
             return render(request, 'blm/user/login.html', context=context)
 
 
+# 注册检查
 def reg_check(request):
     username = request.POST.get('username', '')
     userphone = request.POST.get('phone', '')
@@ -86,6 +88,7 @@ def reg_check(request):
             return JsonResponse(data)
 
 
+# 账号激活
 def beactive(request):
     token = request.GET.get('token')
     user_id = cache.get(token)
@@ -103,6 +106,7 @@ def beactive(request):
         return HttpResponse('邮件已过期，请重新发送邮件！')
 
 
+# 注册
 def register(request):
     if request.method == "GET":
         return render(request, 'blm/user/register.html')
@@ -133,6 +137,7 @@ def register(request):
         return redirect(reverse('user:login'))
 
 
+# 用户信息
 @login_required
 def user_info(request):
     if request.method == "GET":
@@ -194,17 +199,50 @@ def user_info(request):
         return redirect(reverse('blmmine:mine'))
 
 
+# 用户地址
 @login_required
 def address(request):
     username = request.session.get('username')
     user = User.objects.filter(userName=username)[0]
 
     if request.method == "GET":
-        addrs = Address.objects.filter(userId=user.id)
-        context = {
-            'addrs': addrs
-        }
-        return render(request, 'blm/user/address.html', context=context)
+        addr_id = request.GET.get('addr_id', '')
+        if addr_id:
+            addr_used_num = Address.objects.filter(isselect=1).count()
+            # 如果没有默认地址，设置它为默认地址
+            if addr_used_num == 0:
+                addr_used = Address.objects.get(pk=addr_id)
+                addr_used.isselect = True
+                addr_used.save()
+
+                addrs = Address.objects.filter(userId=user.id).exclude(pk=addr_used.id)
+                context = {
+                    'addrs': addrs,
+                    'addr_used': addr_used,
+                }
+                return render(request, 'blm/user/address.html', context=context)
+            # 如果有默认地址，设置它为默认地址，把旧的地址改为非默认
+            else:
+                addr_old_used = Address.objects.filter(isselect=1)[0]
+                addr_old_used.isselect = False
+                addr_old_used.save()
+
+                addr_used = Address.objects.get(pk=addr_id)
+                addr_used.isselect = True
+                addr_used.save()
+
+                addrs = Address.objects.filter(userId=user.id).exclude(pk=addr_used.id)
+                context = {
+                    'addrs': addrs,
+                    'addr_used': addr_used,
+                }
+                return render(request, 'blm/user/address.html', context=context)
+        else:
+            addrs = Address.objects.filter(userId=user.id)
+            context = {
+                'addrs': addrs,
+            }
+            return render(request, 'blm/user/address.html', context=context)
 
     else:
         consignee = request.POST.get('consignee')
@@ -216,6 +254,12 @@ def address(request):
         return redirect(reverse('user:address'))
 
 
+# 订单详情
+def order(request):
+    return HttpResponse('结算成功')
+
+
+# 退出
 def logout(request):
     # 删除session
     request.session.flush()

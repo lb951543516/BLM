@@ -108,13 +108,13 @@
                                                 <div class="title">{{ good.productlongname }}</div>
                                                 <p class="detailTag"><span>精选</span></p>
                                                 <div class="price">¥ {{ good.price }}
-                                                    &nbsp&nbsp<span>¥ {{ good.marketprice }}</span>
+                                                    <span>¥ {{ good.marketprice }}</span>
                                                 </div>
                                             </div>
                                             <section id="section1">
-                                                <button>-</button>
-                                                <span>0</span>
-                                                <button>+</button>
+                                                <button class="reducetocar" g_id="{{ good.id }}">-</button>
+                                                <span g_id="{{ good.id }}">0</span>
+                                                <button class="addtocar" g_id="{{ good.id }}">+</button>
                                             </section>
                                         </div>
                                     </div>

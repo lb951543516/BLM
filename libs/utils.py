@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from django.template import loader
 from django.urls import reverse
 
+from UserApp.models import User, Address
+
 
 # 登录验证
 def login_required(func):
@@ -42,3 +44,15 @@ def send_email(username, userrank, token, email):
     # 发送
     send_mail(subject=subject, message='', html_message=html_message, from_email=from_email,
               recipient_list=recipient_list)
+
+
+# 检查是否设置默认地址
+def check_addr(request):
+    username = request.session.get('username')
+    uid = User.objects.get(userName=username).id
+    addr_used_num = Address.objects.filter(userId=uid).filter(isselect=1).count()
+
+    if addr_used_num == 0:
+        return False
+    else:
+        return True

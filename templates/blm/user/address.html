@@ -3,6 +3,7 @@
 
 {% block ext_css %}
     {{ block.super }}
+    <link rel="stylesheet" href="{% static 'blm/user/address/css/address.css' %}">
 {% endblock %}
 
 
@@ -25,11 +26,33 @@
 
 
 {% block content %}
-    {#    显示地址#}
+    {#    显示默认地址#}
+    {% if addr_used %}
+        <div class="panel panel-default" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 4px">
+            <div class="panel-body" style="padding: 5px">
+                <label class="title" style="margin-left: 5px">{{ addr_used.detailAdd }}</label>
+                <a href="#">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"
+                          style="float: right;color: #337ab7"></span>
+                </a>
+                <br>
+                <span style="margin-left: 6px">{{ addr_used.consignee }}</span>
+                <span style="margin-left: 10px">{{ addr_used.userPhone }}</span>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" style="float: right;color: #337ab7"></span>
+            </div>
+        </div>
+    {% endif %}
+
+    {#    显示非默认地址#}
     {% for addr in addrs %}
         <div class="panel panel-default" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 4px">
             <div class="panel-body" style="padding: 5px">
-                <label style="margin-left: 5px">{{ addr.detailAdd }}</label><br>
+                <label class="title" style="margin-left: 5px">{{ addr.detailAdd }}</label>
+                <a href="{% url 'user:address' %}?addr_id={{ addr.id }}">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"
+                          style="float: right;color: grey"></span>
+                </a>
+                <br>
                 <span style="margin-left: 6px">{{ addr.consignee }}</span>
                 <span style="margin-left: 10px">{{ addr.userPhone }}</span>
                 <span class="glyphicon glyphicon-edit" aria-hidden="true" style="float: right;color: #337ab7"></span>
