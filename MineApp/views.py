@@ -9,6 +9,7 @@ def mine(request):
     username = request.session.get('username', '')
     if username:
         user = User.objects.filter(userName=username)[0]
+        userrank = user.userRank
         url_img = user.userImg
         user_phone = user.userPhone[0:3] + '****' + user.userPhone[7:]
 
@@ -16,6 +17,7 @@ def mine(request):
             'username': username,
             'user_phone': user_phone,
             'url_img': url_img,
+            'userrank': userrank,
         }
 
         return render(request, 'blm/main/mine/mine.html', context=context)

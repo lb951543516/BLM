@@ -129,3 +129,30 @@
     text-align: center;
     line-height: 0.4rem;
 }
+
+.confirm, .all_select {
+    height: 2.5rem;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+}
+
+.confirm > span, .all_select  {
+    box-sizing: border-box;
+    border: 0.04rem solid #337ab7;
+    background: white;
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    overflow: hidden;
+    border-radius: 50%;
+    line-height: 0.6rem;
+}
+
+.confirm > span > span, .all_select > span  {
+    background: white;
+    font-size: 18px;
+    display: block;
+    padding-top: 2px;
+}

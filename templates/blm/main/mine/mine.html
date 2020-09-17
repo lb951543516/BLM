@@ -33,8 +33,10 @@
                     <img src="{% static 'blm/main/mine/img/oldtx.png' %}" class="img-circle"
                          style="width: 60px;float: left;margin-top: 5px;margin-bottom: 5px">
                 {% endif %}
-                <label style="margin-top: 18px;margin-left: 10px">{{ username }}</label>
-
+                <label style="margin-top: 18px;margin-left: 11px">{{ username }}</label>
+                {% if userrank == '超级会员' %}
+                <span class="glyphicon glyphicon-fire" aria-hidden="true" style="color: gold"></span>
+                {% endif %}
                 <a href="{% url 'user:logout' %}">
                 <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"
                       style="width: 20px;float: right"></span>

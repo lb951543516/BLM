@@ -151,16 +151,23 @@ $(function () {
                 var pwd = $('#reg_password').val()
                 var cpwd = $('#reg_confirm').val()
 
-                //加密
-                var bas = new Base64();
-                var hash = bas.encode(pwd);
-                var hash2 = bas.encode(cpwd);
-                // $("#reg_password").val(hash);
-                // $("#reg_confirm").val(hash2);
+                // //md5加密
+                // new_pwd = md5(pwd)
+                // new_cpwd = md5(cpwd)
+                // $("#reg_password").val(new_pwd);
+                // $("#reg_confirm").val(new_cpwd);
 
-                //解密
-                //var str = bas.decode(hash);
-                //$("#password").val(str);
+                // //base64加密
+                // var bas = new Base64();
+                // var hash = bas.encode(pwd);
+                // var hash2 = bas.encode(cpwd);
+                // // $("#reg_password").val(hash);
+                // // $("#reg_confirm").val(hash2);
+                // //base64解密
+                // //var str = bas.decode(hash);
+                // //$("#password").val(str);
+
+
                 return true
             } else {
                 alert("请完善信息")

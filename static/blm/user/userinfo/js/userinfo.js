@@ -95,12 +95,3 @@ $('.form-control').blur(function () {
         $('#toast').attr("disabled", true);
     }
 });
-
-// // click
-// $('.red_button').click(function () {
-//     if (user_Boolean && password_Boolea && varconfirm_Boolean && emaile_Boolean && Mobile_Boolean == true) {
-//         alert("注册成功");
-//     } else {
-//         alert("请完善信息");
-//     }
-// });

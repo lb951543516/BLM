@@ -5,14 +5,17 @@ from django.urls import reverse
 from CarApp.models import BlmCar
 from UserApp.models import User
 
-# 购物车页面
 from libs.utils import check_addr
 
 
+# 购物车页面
 def car(request):
     username = request.session.get('username')
     u_id = User.objects.filter(userName=username)[0].id
     cars = BlmCar.objects.filter(c_user_id=u_id)
+
+    # 如果当前用户的购物车里 不存在 有未选择 的商品------true代表全都选择了 ,false代表没有全部都选
+    is_all_buy = not BlmCar.objects.filter(c_user_id=u_id).filter(is_buy=False).exists()
 
     # 检查是否设置了默认地址
     can_pay = False
@@ -31,6 +34,7 @@ def car(request):
         'money': money,
         'can_pay': can_pay,
         'u_id': u_id,
+        'is_all_buy': is_all_buy
     }
 
     return render(request, 'blm/main/car/car.html', context=context)
@@ -135,7 +139,53 @@ def deletegood(request):
 # 结算
 def pay(request):
     uid = request.GET.get('uid')
-    cars = BlmCar.objects.filter(c_user_id=uid)
-    cars.delete()
+    car_num = BlmCar.objects.filter(c_user_id=uid).filter(is_buy=True).count()
+    if car_num > 0:
+        cars = BlmCar.objects.filter(c_user_id=uid).filter(is_buy=True)
+        cars.delete()
 
-    return redirect(reverse('user:order'))
+        return redirect(reverse('user:order'))
+    else:
+        return redirect(reverse('blmcar:car'))
+
+
+# 改变单选框的状态
+def changeStatus(request):
+    c_id = request.POST.get('c_id')
+
+    car = BlmCar.objects.get(pk=c_id)
+
+    car.is_buy = not car.is_buy
+
+    car.save()
+
+    username = request.session.get('username')
+    u_id = User.objects.filter(userName=username)[0].id
+
+    # 如果当前用户的购物车里 不存在 有未选择 的商品------true代表全都选择了 ,false代表没有全部都选
+    is_all_buy = not BlmCar.objects.filter(c_user_id=u_id).filter(is_buy=False).exists()
+
+    data = {
+        'car.is_buy': car.is_buy,
+        'is_all_buy': is_all_buy
+    }
+    return JsonResponse(data=data)
+
+
+def allselect(request):
+    # ajax的参数不能传递列表---以#连接字符串传递过来
+    c_id_list = request.GET.get('c_id_list')
+    # 以#切割字符串变成列表
+    id_list = c_id_list.split('#')
+
+    car_list = BlmCar.objects.filter(id__in=id_list)
+
+    for car in car_list:
+        car.is_buy = not car.is_buy
+        car.save()
+
+    data = {
+        'msg': 'ok',
+        'status': 200
+    }
+    return JsonResponse(data=data)

@@ -22,4 +22,10 @@ urlpatterns = [
 
     # 删除商品
     url(r'^pay/', views.pay, name='pay'),
+
+    # 改变单选框状态
+    url(r'^changestatus/', views.changeStatus, name='changestatus'),
+
+    # 全选框
+    url(r'^allselect/', views.allselect, name='allselect'),
 ]

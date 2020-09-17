@@ -240,15 +240,6 @@ a, button, input, button, span, div {
     color: #337ab7;
 }
 
-.addnum {
-    background: url(/static/blm/main/market/img/jiah.png) no-repeat;
-    background-size: contain;
-}
-
-.lessnum {
-    background: url(/static/blm/main/market/img/jianh.png) no-repeat;
-    background-size: contain;
-}
 
 .detailTag {
     margin: 0.2rem 0;

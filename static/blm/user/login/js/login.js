@@ -25,14 +25,18 @@ $(function () {
         if (result == 1) {
             var pwd = $('#log_password').val()
 
-            //加密
-            var bas = new Base64();
-            var hash = bas.encode(pwd);
-            // $("#log_password").val(hash);
+            // //md5加密
+            // new_pwd = md5(pwd)
+            // $("#log_password").val(new_pwd);
 
-            //解密
-            //var str = bas.decode(hash);
-            //$("#password").val(str);
+
+            // //base64加密
+            // var bas = new Base64();
+            // var hash = bas.encode(pwd);
+            // // $("#log_password").val(hash);
+            // //base64解密
+            // //var str = bas.decode(hash);
+            // //$("#password").val(str);
             return true
         } else {
             alert("请完善信息")
