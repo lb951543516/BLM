@@ -151,11 +151,11 @@ $(function () {
                 var pwd = $('#reg_password').val()
                 var cpwd = $('#reg_confirm').val()
 
-                // //md5加密
-                // new_pwd = md5(pwd)
-                // new_cpwd = md5(cpwd)
-                // $("#reg_password").val(new_pwd);
-                // $("#reg_confirm").val(new_cpwd);
+                //md5加密
+                new_pwd = md5(pwd)
+                new_cpwd = md5(cpwd)
+                $("#reg_password").val(new_pwd);
+                $("#reg_confirm").val(new_cpwd);
 
                 // //base64加密
                 // var bas = new Base64();
@@ -173,6 +173,10 @@ $(function () {
                 alert("请完善信息")
                 $("#reg_password").val('');
                 $("#reg_confirm").val('');
+                password_Boolean = false
+                $('.password_hint').html("×").css("color", "red");
+                varconfirm_Boolean = false
+                $('.confirm_hint').html("×").css("color", "red");
                 return false
             }
         })

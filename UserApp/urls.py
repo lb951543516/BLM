@@ -17,6 +17,9 @@ urlpatterns = [
 
     # 个人资料
     url(r'^userinfo/', views.user_info, name='userinfo'),
+    
+    # 检查修改
+    url(r'^updatecheck/', views.update_check, name='updatecheck'),
 
     # 地址管理
     url(r'^address/', views.address, name='address'),

@@ -3,7 +3,6 @@ var password_Boolean = true;
 var varconfirm_Boolean = true;
 var email_Boolean = true;
 var Mobile_Boolean = true;
-var old_password_Boolean = false;
 
 //nickname
 $('#reg_nick').blur(function () {
@@ -40,10 +39,26 @@ $('#reg_confirm').blur(function () {
 
 
 // Email
-$('.reg_email').blur(function () {
-    if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".reg_email").val())) {
-        $('.email_hint').html("✔").css("color", "green");
-        email_Boolean = true;
+$('#reg_email').blur(function () {
+    if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($("#reg_email").val())) {
+        var email = $("#reg_email").val()
+        $.ajax({
+            type: 'GET',
+            url: '/user/updatecheck/',
+            data: {'email': email},
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data['msg'] == '邮箱已被绑定或有误！') {
+                    $('.email_hint').html("×").css("color", "red");
+                    email_Boolean = false;
+                } else {
+                    $('.email_hint').html("✔").css("color", "green");
+                    email_Boolean = true;
+                }
+            }
+        })
     } else {
         $('.email_hint').html("×").css("color", "red");
         email_Boolean = false;
@@ -53,22 +68,28 @@ $('.reg_email').blur(function () {
 // phone
 $('#reg_phone').blur(function () {
     if ((/^1[34578]\d{9}$/).test($("#reg_phone").val())) {
-        $('.phone_hint').html("✔").css("color", "green");
-        Mobile_Boolean = true;
+        var phone = $('#reg_phone').val()
+        //获取登陆信息
+        $.ajax({
+            type: 'GET',
+            url: '/user/updatecheck/',
+            data: {'phone': phone},
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data['msg'] == '手机号已被绑定或有误！') {
+                    $('.phone_hint').html("×").css("color", "red");
+                    Mobile_Boolean = false;
+                } else {
+                    $('.phone_hint').html("✔").css("color", "green");
+                    Mobile_Boolean = true;
+                }
+            }
+        })
     } else {
         $('.phone_hint').html("×").css("color", "red");
         Mobile_Boolean = false;
-    }
-});
-
-// old_pwd
-$('#reg_old_password').blur(function () {
-    if ((/^[a-zA-Z0-9_-]{6,12}$/).test($("#reg_old_password").val())) {
-        $('.old_password_hint').html("✔").css("color", "green");
-        old_password_Boolean = true;
-    } else {
-        $('.old_password_hint').html("×").css("color", "red");
-        old_password_Boolean = false;
     }
 });
 
@@ -88,10 +109,38 @@ function reads(obj) {
     }
 }
 
-$('.form-control').blur(function () {
-    if (user_Boolean && password_Boolean && Mobile_Boolean && email_Boolean && old_password_Boolean && varconfirm_Boolean == true) {
-        $('#toast').attr("disabled", false);
+
+// ,表单的submit事件的返回值 只有为true的时候 才可以提交表单
+$('form').submit(function () {
+    var result = user_Boolean & password_Boolean & varconfirm_Boolean & email_Boolean & Mobile_Boolean
+
+    if (result == 1) {
+        var pwd = $('#reg_password').val()
+        var cpwd = $('#reg_confirm').val()
+
+        if (pwd.length > 0) {
+            //md5加密
+            new_pwd = md5(pwd)
+            new_cpwd = md5(cpwd)
+            $("#reg_password").val(new_pwd);
+            $("#reg_confirm").val(new_cpwd);
+        }
+
+        // //base64加密
+        // var bas = new Base64();
+        // var hash = bas.encode(pwd);
+        // var hash2 = bas.encode(cpwd);
+        // // $("#reg_password").val(hash);
+        // // $("#reg_confirm").val(hash2);
+        // //base64解密
+        // //var str = bas.decode(hash);
+        // //$("#password").val(str);
+
+        return true
     } else {
-        $('#toast').attr("disabled", true);
+        alert("请完善信息")
+        $("#reg_password").val('');
+        $("#reg_confirm").val('');
+        return false
     }
-});
+})

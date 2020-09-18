@@ -25,9 +25,9 @@ $(function () {
         if (result == 1) {
             var pwd = $('#log_password').val()
 
-            // //md5加密
-            // new_pwd = md5(pwd)
-            // $("#log_password").val(new_pwd);
+            //md5加密
+            new_pwd = md5(pwd)
+            $("#log_password").val(new_pwd);
 
 
             // //base64加密
@@ -41,6 +41,7 @@ $(function () {
         } else {
             alert("请完善信息")
             $("#log_password").val('');
+            password_Boolean = false
             return false
         }
     })
