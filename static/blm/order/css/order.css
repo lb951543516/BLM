@@ -1,0 +1,100 @@
+.item {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.item-left {
+    float: left;
+}
+
+.item-right {
+    float: left;
+    padding: 0;
+    padding-left: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    /*margin-right: 30px;*/
+
+}
+
+.item-ico {
+    width: 30px;
+    height: 30px;
+    margin: 20px 0 0 0;
+    float: left;
+    padding: 0;
+}
+
+.item-img {
+    width: 110px;
+    height: 75px;
+    background: #eee;
+}
+
+.item-img img {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    margin: 0.1rem 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 0.38rem;
+    width: 100px;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.title2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+    margin-left: 8px
+}
+
+.subtitle {
+    width: 70px;
+    height: 20px;
+    margin-top: 10px;
+    background: #eee;
+}
+
+.price {
+    width: 80px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #f60002;
+}
+
+.price > span {
+    color: grey;
+}
+
+
+.detailTag {
+    margin: 0.2rem 0;
+}
+
+.detailTag span {
+    border: 0.05rem solid red;
+    border-radius: 0.15rem;
+    padding: 0 0.1rem;
+    color: white;
+    background: red;
+    margin-right: 0.3rem;
+}
+
+.detailTag span:first-child {
+    background: white;
+    color: red;
+}

@@ -134,19 +134,6 @@ def delete_good(request):
     return redirect(reverse('blmcar:car'))
 
 
-# 结算
-def pay(request):
-    uid = request.GET.get('uid')
-    car_num = BlmCar.objects.filter(c_user_id=uid).filter(is_buy=True).count()
-    if car_num > 0:
-        cars = BlmCar.objects.filter(c_user_id=uid).filter(is_buy=True)
-        cars.delete()
-
-        return redirect(reverse('user:order'))
-    else:
-        return redirect(reverse('blmcar:car'))
-
-
 # 改变单选框的状态
 def change_status(request):
     c_id = request.POST.get('c_id')

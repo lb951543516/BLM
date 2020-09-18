@@ -3,6 +3,7 @@
 
 {% block ext_css %}
     {{ block.super }}
+    <link rel="stylesheet" href="{% static 'blm/order/css/order.css' %}">
 {% endblock %}
 
 
@@ -26,19 +27,34 @@
 
 {% block content %}
     {#    显示订单#}
-    {% for addr in addrs %}
-        <div class="panel panel-default" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 4px">
+    {% for order in orders %}
+        <div class="panel panel-default" style="margin:8px;margin-bottom: 4px">
             <div class="panel-body" style="padding: 5px">
-                <label class="title" style="margin-left: 5px">{{ addr.detailAdd }}</label>
-                <a href="{% url 'user:address' %}?addr_id={{ addr.id }}">
-                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"
-                          style="float: right;color: grey"></span>
-                </a>
-                <br>
-                <span style="margin-left: 6px">{{ addr.consignee }}</span>
-                <span style="margin-left: 10px">{{ addr.userPhone }}</span>
-                <span class="glyphicon glyphicon-edit" aria-hidden="true" style="float: right;color: #337ab7"></span>
+                <span style="margin-left: 10px">{{ order.o_time }}</span>
+                {% for ordergood in order.blm_ordergoods_set.all %}
+                    <div class="item">
+                        <div class="item-left">
+                            <div class="item-img"><img src="/static{{ ordergood.og_good.img }}"></div>
+                        </div>
+                        <div class="item-right">
+                            <div class="title">{{ ordergood.og_good.productlongname }}</div>
+                            <p class="detailTag"><span>精选</span></p>
+                            <div class="price">¥ {{ ordergood.og_good.price }}
+                                <span> x{{ ordergood.og_c_good_num }}个</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <span class="title2">{{ addr_detail }}</span><br>
+                <span style="margin-left: 10px">{{ addr.consignee }}</span>
+                <span style="margin-left: 10px">{{ addr.userPhone }}</span><br>
+                <span style="margin-left: 10px">共：{{ order.o_total_price }}元</span>
             </div>
         </div>
     {% endfor %}
+
+
+    <div class="form-group" style="margin-bottom: 120px;display: block">
+        <div class="col-sm-8"></div>
+    </div>
 {% endblock %}

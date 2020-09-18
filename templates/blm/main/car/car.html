@@ -35,7 +35,6 @@
                             {% endif %}
                         </span>
                     </div>
-
                     <div class="item-left">
                         <div class="item-img"><img src="/static{{ car.c_good.productimg }}"></div>
                     </div>
@@ -55,7 +54,6 @@
                        aria-hidden="true"
                        style="color: grey;float: right;margin-top: 20px"></a>
                 </div>
-
             </div>
         </div>
     {% endfor %}
@@ -74,9 +72,10 @@
                     {% endif %}
                 </span>
             全选
-            <span id="pay_money" class="glyphicon glyphicon-yen" aria-hidden="true" style="margin-left: 40px">:&nbsp{{ money }}</span>
+            <span id="pay_money" class="glyphicon glyphicon-yen" aria-hidden="true"
+                  style="margin-left: 40px">:&nbsp{{ money }}</span>
             {% if can_pay %}
-                <a href="{% url 'blmcar:pay' %}?uid={{ u_id }}" style="float: right;padding-right: 5px">结算</a>
+                <a href="{% url 'blmorder:order' %}?uid={{ u_id }}" style="float: right;padding-right: 5px">结算</a>
             {% else %}
                 <a href="{% url 'user:address' %}" style="float: right;padding-right: 5px">结算</a>
             {% endif %}

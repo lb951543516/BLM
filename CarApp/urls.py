@@ -20,9 +20,6 @@ urlpatterns = [
     # 删除商品
     url(r'^deletegood/', views.delete_good, name='deletegood'),
 
-    # 删除商品
-    url(r'^pay/', views.pay, name='pay'),
-
     # 改变单选框状态
     url(r'^changestatus/', views.change_status, name='changestatus'),
 
