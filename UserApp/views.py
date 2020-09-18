@@ -237,7 +237,7 @@ def address(request):
     if request.method == "GET":
         addr_id = request.GET.get('addr_id', '')
         if addr_id:
-            addr_used_num = Address.objects.filter(isselect=1).count()
+            addr_used_num = Address.objects.filter(userId=user.id).filter(isselect=1).count()
             # 如果没有默认地址，设置它为默认地址
             if addr_used_num == 0:
                 addr_used = Address.objects.get(pk=addr_id)
@@ -252,7 +252,7 @@ def address(request):
                 return render(request, 'blm/user/address.html', context=context)
             # 如果有默认地址，设置它为默认地址，把旧的地址改为非默认
             else:
-                addr_old_used = Address.objects.filter(isselect=1)[0]
+                addr_old_used = Address.objects.filter(userId=user.id).filter(isselect=1)[0]
                 addr_old_used.isselect = False
                 addr_old_used.save()
 
@@ -268,7 +268,7 @@ def address(request):
                 return render(request, 'blm/user/address.html', context=context)
         else:
             # 判断是否有默认
-            addr_used_num = Address.objects.filter(isselect=1).count()
+            addr_used_num = Address.objects.filter(userId=user.id).filter(isselect=1).count()
             if addr_used_num == 0:
                 addrs = Address.objects.filter(userId=user.id)
                 context = {
@@ -276,15 +276,13 @@ def address(request):
                 }
                 return render(request, 'blm/user/address.html', context=context)
             else:
-                addr_used = Address.objects.filter(isselect=1)[0]
+                addr_used = Address.objects.filter(userId=user.id).filter(isselect=1)[0]
                 addrs = Address.objects.filter(userId=user.id).exclude(pk=addr_used.id)
                 context = {
                     'addrs': addrs,
                     'addr_used': addr_used,
                 }
                 return render(request, 'blm/user/address.html', context=context)
-
-
 
     else:
         consignee = request.POST.get('consignee')
