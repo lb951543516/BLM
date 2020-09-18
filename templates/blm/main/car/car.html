@@ -74,7 +74,7 @@
                     {% endif %}
                 </span>
             全选
-            <span class="glyphicon glyphicon-yen" aria-hidden="true" style="margin-left: 40px">:&nbsp{{ money }}</span>
+            <span id="pay_money" class="glyphicon glyphicon-yen" aria-hidden="true" style="margin-left: 40px">:&nbsp{{ money }}</span>
             {% if can_pay %}
                 <a href="{% url 'blmcar:pay' %}?uid={{ u_id }}" style="float: right;padding-right: 5px">结算</a>
             {% else %}

@@ -8,9 +8,10 @@ $(function () {
             {'c_id': c_id},
             function (data) {
                 $button.prev().text(data['g_num'])
+                $('#pay_money').html(data['money'])
             }
         )
-        window.location.href = '/blmcar/car/';
+        // window.location.href = '/blmcar/car/';
     })
 //    点击 减号添加到购物车
     $('.reduce').click(function () {
@@ -21,9 +22,10 @@ $(function () {
             {'c_id': c_id},
             function (data) {
                 button.next().text(data['g_num'])
+                $('#pay_money').html(data['money'])
             }
         )
-        window.location.href = '/blmcar/car/';
+        // window.location.href = '/blmcar/car/';
     })
 
     //     修改单选的状态
@@ -36,17 +38,21 @@ $(function () {
             function (data) {
                 if (data['car.is_buy']) {
                     $div.find('span').find('span').html('✔');
+                    $('#pay_money').html(data['money'])
                 } else {
                     $div.find('span').find('span').html('');
+                    $('#pay_money').html(data['money'])
                 }
                 if (data['is_all_buy']) {
                     $('.all_select').find('span').html('✔');
+                    $('#pay_money').html(data['money'])
                 } else {
                     $('.all_select').find('span').html('');
+                    $('#pay_money').html(data['money'])
                 }
             }
         )
-        window.location.href = '/blmcar/car/';
+        // window.location.href = '/blmcar/car/';
     })
 
 
@@ -74,9 +80,10 @@ $(function () {
                 success: function (data) {
                     $('.confirm').find('span').find('span').html('');
                     $('.all_select').find('span').html('');
+                    $('#pay_money').html(data['money'])
                 }
             })
-            window.location.href = '/blmcar/car/';
+            // window.location.href = '/blmcar/car/';
         } else {
             $.ajax({
                 url: '/blmcar/allselect/',
@@ -86,9 +93,10 @@ $(function () {
                 success: function (data) {
                     $('.confirm').find('span').find('span').html('✔');
                     $('.all_select').find('span').html('✔');
+                    $('#pay_money').html(data['money'])
                 }
             })
-            window.location.href = '/blmcar/car/';
+            // window.location.href = '/blmcar/car/';
         }
     })
 

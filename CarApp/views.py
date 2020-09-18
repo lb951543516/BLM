@@ -5,7 +5,7 @@ from django.urls import reverse
 from CarApp.models import BlmCar
 from UserApp.models import User
 
-from libs.utils import check_addr
+from libs.utils import check_addr, pay_money
 
 
 # 购物车页面
@@ -24,14 +24,9 @@ def car(request):
     else:
         can_pay = False
 
-    money = 0
-    for car in cars:
-        if car.is_buy:
-            money += car.c_good.price * car.g_num
-
     context = {
         'cars': cars,
-        'money': money,
+        'money': pay_money(request),
         'can_pay': can_pay,
         'u_id': u_id,
         'is_all_buy': is_all_buy
@@ -104,12 +99,14 @@ def reducegood(request):
 
         data = {
             'g_num': car.g_num,
+            'money': pay_money(request),
         }
         return JsonResponse(data)
     elif car.g_num == 1:
         car.delete()
         data = {
             'g_num': 0,
+            'money': pay_money(request),
         }
         return JsonResponse(data)
 
@@ -124,6 +121,7 @@ def addgood(request):
 
     data = {
         'g_num': car.g_num,
+        'money': pay_money(request),
     }
     return JsonResponse(data)
 
@@ -167,7 +165,8 @@ def changeStatus(request):
 
     data = {
         'car.is_buy': car.is_buy,
-        'is_all_buy': is_all_buy
+        'is_all_buy': is_all_buy,
+        'money': pay_money(request),
     }
     return JsonResponse(data=data)
 
@@ -186,6 +185,7 @@ def allselect(request):
 
     data = {
         'msg': 'ok',
-        'status': 200
+        'status': 200,
+        'money': pay_money(request),
     }
     return JsonResponse(data=data)

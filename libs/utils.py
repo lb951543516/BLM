@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.template import loader
 from django.urls import reverse
 
+from CarApp.models import BlmCar
 from UserApp.models import User, Address
 
 
@@ -56,3 +57,17 @@ def check_addr(request):
         return False
     else:
         return True
+
+
+# 算钱
+def pay_money(request):
+    username = request.session.get('username')
+    u_id = User.objects.filter(userName=username)[0].id
+    cars = BlmCar.objects.filter(c_user_id=u_id)
+
+    money = 0
+    for car in cars:
+        if car.is_buy:
+            money += car.c_good.price * car.g_num
+
+    return round(money, 2)
