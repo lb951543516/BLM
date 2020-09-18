@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 
-# Create your views here.
 from CarApp.models import BlmCar
 from MarketApp.models import BlmFoodType, BlmGoods, BlmOrderType
 from UserApp.models import User
@@ -61,7 +60,7 @@ def market(request):
     return render(request, 'blm/main/market/market.html', context=context)
 
 
-def goodnum(request):
+def good_num(request):
     username = request.session.get('username')
     g_id = request.GET.get('g_id')
     u_id = User.objects.filter(userName=username)[0].id

@@ -33,4 +33,7 @@ urlpatterns = [
 
     # 饱了吗用户页面
     url(r'^user/', include('UserApp.urls', namespace='user')),
+
+    # 饱了吗订单页面
+    url(r'^blmorder/', include('OrderApp.urls', namespace='blmorder')),
 ]

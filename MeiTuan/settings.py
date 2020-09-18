@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'CarApp',
     'MarketApp',
     'MineApp',
+    'OrderApp',
 ]
 
 MIDDLEWARE = [

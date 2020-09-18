@@ -89,7 +89,7 @@ def reg_check(request):
 
 
 # 账号激活
-def beactive(request):
+def be_active(request):
     token = request.GET.get('token')
     user_id = cache.get(token)
 
@@ -252,11 +252,6 @@ def address(request):
         addr = Address(userId=user.id, consignee=consignee, userPhone=userPhone, detailAdd=detailAdd)
         addr.save()
         return redirect(reverse('user:address'))
-
-
-# 订单详情
-def order(request):
-    return HttpResponse('结算成功')
 
 
 # 退出

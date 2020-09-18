@@ -13,16 +13,13 @@ urlpatterns = [
     url(r'^regcheck/', views.reg_check, name='regcheck'),
 
     # 邮箱，帐号激活
-    url(r'^beactive/', views.beactive, name='beactive'),
+    url(r'^beactive/', views.be_active, name='beactive'),
 
     # 个人资料
     url(r'^userinfo/', views.user_info, name='userinfo'),
 
     # 地址管理
     url(r'^address/', views.address, name='address'),
-
-    # 订单详情
-    url(r'^order/', views.order, name='order'),
 
     # 退出
     url(r'^logout/', views.logout, name='logout'),

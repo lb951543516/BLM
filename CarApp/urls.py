@@ -6,26 +6,26 @@ urlpatterns = [
     url(r'^car/', views.car, name='car'),
 
     # 添加到购物车
-    url(r'^addtocar/', views.addtocar, name='addtocar'),
+    url(r'^addtocar/', views.add_to_car, name='addtocar'),
 
     # 购物车 减少
-    url(r'^reducetocar/', views.reducetocar, name='reducetocar'),
+    url(r'^reducetocar/', views.reduce_to_car, name='reducetocar'),
 
     #  减少商品
-    url(r'^reducegood/', views.reducegood, name='reducegood'),
+    url(r'^reducegood/', views.reduce_good, name='reducegood'),
 
     # 增加商品
-    url(r'^addgood/', views.addgood, name='addgood'),
+    url(r'^addgood/', views.add_good, name='addgood'),
 
     # 删除商品
-    url(r'^deletegood/', views.deletegood, name='deletegood'),
+    url(r'^deletegood/', views.delete_good, name='deletegood'),
 
     # 删除商品
     url(r'^pay/', views.pay, name='pay'),
 
     # 改变单选框状态
-    url(r'^changestatus/', views.changeStatus, name='changestatus'),
+    url(r'^changestatus/', views.change_status, name='changestatus'),
 
     # 全选框
-    url(r'^allselect/', views.allselect, name='allselect'),
+    url(r'^allselect/', views.all_select, name='allselect'),
 ]

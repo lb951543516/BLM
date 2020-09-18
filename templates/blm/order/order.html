@@ -1,0 +1,44 @@
+{% extends 'base_order.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+{% endblock %}
+
+
+{% block title %}
+    <title>
+        饱了吗订单
+    </title>
+{% endblock %}
+
+
+{% block header %}
+    <div style="padding-top: 12px">
+        &nbsp
+        <a href="{% url 'blmmine:mine' %}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color: white"></span>
+        </a>
+        <span style="color: white;font-size: 15px;margin-left: 130px">订单详情</span>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    {#    显示订单#}
+    {% for addr in addrs %}
+        <div class="panel panel-default" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 4px">
+            <div class="panel-body" style="padding: 5px">
+                <label class="title" style="margin-left: 5px">{{ addr.detailAdd }}</label>
+                <a href="{% url 'user:address' %}?addr_id={{ addr.id }}">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"
+                          style="float: right;color: grey"></span>
+                </a>
+                <br>
+                <span style="margin-left: 6px">{{ addr.consignee }}</span>
+                <span style="margin-left: 10px">{{ addr.userPhone }}</span>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" style="float: right;color: #337ab7"></span>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

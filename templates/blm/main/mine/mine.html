@@ -35,7 +35,7 @@
                 {% endif %}
                 <label style="margin-top: 18px;margin-left: 11px">{{ username }}</label>
                 {% if userrank == '超级会员' %}
-                <span class="glyphicon glyphicon-fire" aria-hidden="true" style="color: gold"></span>
+                    <span class="glyphicon glyphicon-fire" aria-hidden="true" style="color: gold"></span>
                 {% endif %}
                 <a href="{% url 'user:logout' %}">
                 <span class="glyphicon glyphicon glyphicon-log-out" aria-hidden="true"
@@ -82,7 +82,8 @@
             </div>
 
             <div style="display: inline;float: left">
-                <a href="#" class="jq22-tabBar-item jq22-tabBar-item-active" style="width: 85px;color: #337ab7">
+                <a href="{% url 'blmorder:order' %}" class="jq22-tabBar-item jq22-tabBar-item-active"
+                   style="width: 85px;color: #337ab7">
                 <span class="jq22-tabBar-item-icon">
                     <span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"
                           style="width: 20px;padding-left: 3px"></span>

@@ -38,18 +38,15 @@ $(function () {
             function (data) {
                 if (data['car.is_buy']) {
                     $div.find('span').find('span').html('✔');
-                    $('#pay_money').html(data['money'])
                 } else {
                     $div.find('span').find('span').html('');
-                    $('#pay_money').html(data['money'])
                 }
                 if (data['is_all_buy']) {
                     $('.all_select').find('span').html('✔');
-                    $('#pay_money').html(data['money'])
                 } else {
                     $('.all_select').find('span').html('');
-                    $('#pay_money').html(data['money'])
                 }
+                $('#pay_money').html(data['money'])
             }
         )
         // window.location.href = '/blmcar/car/';

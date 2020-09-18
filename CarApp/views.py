@@ -36,7 +36,7 @@ def car(request):
 
 
 # 全球购页面添加商品
-def addtocar(request):
+def add_to_car(request):
     username = request.session.get('username')
     g_id = request.GET.get('g_id')
     u_id = User.objects.filter(userName=username)[0].id
@@ -60,7 +60,7 @@ def addtocar(request):
 
 
 # 全球购页面减少商品
-def reducetocar(request):
+def reduce_to_car(request):
     username = request.session.get('username')
     g_id = request.GET.get('g_id')
     u_id = User.objects.filter(userName=username)[0].id
@@ -89,7 +89,7 @@ def reducetocar(request):
 
 
 # 购物车页面减少商品
-def reducegood(request):
+def reduce_good(request):
     c_id = request.GET.get('c_id')
 
     car = BlmCar.objects.get(pk=c_id)
@@ -112,7 +112,7 @@ def reducegood(request):
 
 
 # 购物车页面增加商品
-def addgood(request):
+def add_good(request):
     c_id = request.GET.get('c_id')
 
     car = BlmCar.objects.get(pk=c_id)
@@ -127,7 +127,7 @@ def addgood(request):
 
 
 # 删除购物车内的商品
-def deletegood(request):
+def delete_good(request):
     cid = request.GET.get('cid')
     car = BlmCar.objects.get(pk=cid)
     car.delete()
@@ -148,7 +148,7 @@ def pay(request):
 
 
 # 改变单选框的状态
-def changeStatus(request):
+def change_status(request):
     c_id = request.POST.get('c_id')
 
     car = BlmCar.objects.get(pk=c_id)
@@ -171,7 +171,7 @@ def changeStatus(request):
     return JsonResponse(data=data)
 
 
-def allselect(request):
+def all_select(request):
     # ajax的参数不能传递列表---以#连接字符串传递过来
     c_id_list = request.GET.get('c_id_list')
     # 以#切割字符串变成列表
