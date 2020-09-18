@@ -238,11 +238,24 @@ def address(request):
                 }
                 return render(request, 'blm/user/address.html', context=context)
         else:
-            addrs = Address.objects.filter(userId=user.id)
-            context = {
-                'addrs': addrs,
-            }
-            return render(request, 'blm/user/address.html', context=context)
+            # 判断是否有默认
+            addr_used_num = Address.objects.filter(isselect=1).count()
+            if addr_used_num == 0:
+                addrs = Address.objects.filter(userId=user.id)
+                context = {
+                    'addrs': addrs,
+                }
+                return render(request, 'blm/user/address.html', context=context)
+            else:
+                addr_used = Address.objects.filter(isselect=1)[0]
+                addrs = Address.objects.filter(userId=user.id).exclude(pk=addr_used.id)
+                context = {
+                    'addrs': addrs,
+                    'addr_used': addr_used,
+                }
+                return render(request, 'blm/user/address.html', context=context)
+
+
 
     else:
         consignee = request.POST.get('consignee')
